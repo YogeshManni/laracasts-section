@@ -19,28 +19,44 @@
         [
         "name" => "Do Androids Dream of Electronic Sheeps",
         "author" => "Philip K. Dick",
+        "releaseYear" => "1995",
         "purchaseUrl" => "https://exaampleUrl1.com"
         ],
         [
         "name" => "The Langoliers",
         "author" => "Andy Weir",
+        "releaseYear" => "2012",
         "purchaseUrl" => "https://exaampleUrl2.com"
         ],
         [
         "name" => "Hail Mary",
-        "author" => "Mary M. Coeheler",
+        "author" => "Andy Weir",
+        "releaseYear" => "2016",
         "purchaseUrl" => "https://exaampleUrl3.com"
         ]
         
         ];
+
+
+        function filterBooksByAuthor($books, $author)
+        {
+            $filteredBooks = [];
+            foreach($books as $book)
+            {
+              if($book['author'] === $author)
+                  $filteredBooks[] = $book;
+            }
+
+            return $filteredBooks;
+        }
           ?>
 
     <ul>
         <?php
-              foreach($books as $book)
+              foreach(filterBooksByAuthor($books,"Andy Weir") as $book)
               {
                 echo "<li> <a href='{$book['purchaseUrl']}'>
-                             {$book['name']}
+                             {$book['name']} (Released in {$book['releaseYear']}) - By {$book['author']}
                            </a>
                       </li>";
               }
