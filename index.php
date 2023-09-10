@@ -38,19 +38,24 @@
         ];
 
 
-        $filterBooks =  function ($books, $author)
+        $filterItems =  function($items, $fn)
         {
-            $filteredBooks = [];
-            foreach($books as $book)
+            $filteredItems = [];
+            foreach($items as $item)
             {
-              if($book['author'] === $author)
-                  $filteredBooks[] = $book;
+              if($fn($item))
+              {
+                  $filteredItems[] = $item;
+              }
             }
 
-            return $filteredBooks;
+            return $filteredItems;
         };
 
-         $filteredBooks = $filterBooks($books,"Andy Weir");
+         $filteredBooks = $filterItems($books,function($book)
+        {
+            return $book['releaseYear'] > 1995;
+        });
           ?>
 
     <ul>
