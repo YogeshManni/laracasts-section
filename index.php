@@ -38,7 +38,7 @@
         ];
 
 
-        function filterBooksByAuthor($books, $author)
+        $filterBooks =  function ($books, $author)
         {
             $filteredBooks = [];
             foreach($books as $book)
@@ -48,12 +48,14 @@
             }
 
             return $filteredBooks;
-        }
+        };
+
+         $filteredBooks = $filterBooks($books,"Andy Weir");
           ?>
 
     <ul>
         <?php
-              foreach(filterBooksByAuthor($books,"Andy Weir") as $book)
+              foreach($filteredBooks as $book)
               {
                 echo "<li> <a href='{$book['purchaseUrl']}'>
                              {$book['name']} (Released in {$book['releaseYear']}) - By {$book['author']}
