@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Demo</title>
-    <style>
+ <?php
 
-    </style>
-</head>
 
-<body>
 
-    <h1> Recommended Books </h1>
-    <?php 
-      $books = [
+ $books = [
 
         [
         "name" => "Do Androids Dream of Electronic Sheeps",
@@ -56,19 +45,6 @@
         {
             return $book['releaseYear'] > 1995;
         });
-          ?>
 
-    <ul>
-        <?php
-              foreach($filteredBooks as $book)
-              {
-                echo "<li> <a href='{$book['purchaseUrl']}'>
-                             {$book['name']} (Released in {$book['releaseYear']}) - By {$book['author']}
-                           </a>
-                      </li>";
-              }
-            ?>
-    </ul>
-</body>
-
-</html>
+        require "index.view.php"
+?>
